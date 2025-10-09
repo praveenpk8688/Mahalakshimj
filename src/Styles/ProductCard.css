@@ -1,0 +1,81 @@
+Sets a nice font and centers the card for demonstration
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.product-card {
+  width: 320px;
+  background-color: #f8f9fa; 
+  color: #212529;
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-image-container {
+  position: relative;
+  background-color: #f8f9fa;
+}
+
+.product-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.like-button {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.heart-icon path {
+  transition: fill 0.2s ease-in-out;
+}
+
+.like-button:hover .heart-icon path {
+  fill: rgba(255, 105, 180, 0.3); 
+  stroke: #ff69b4; 
+}
+
+.product-details {
+  padding: 16px;
+}
+
+.product-pricing {
+  display: flex;
+  align-items: baseline; 
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.current-price {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.original-price {
+  font-size: 1rem;
+  color: #adb5bd; 
+  text-decoration: line-through;
+}
+
+.product-title {
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
