@@ -21,30 +21,99 @@ const HeartIcon = () => (
 
 
 const ProductCard = () => {
-  return (
-    <div className="product-card">
-      <div className="product-image-container">
+ const products = [
+  {
+    id: 1,
+    image: "https://i.imgur.com/gB34fIl.png",
+    title: "Bring in the Kindness Heart Earrings in 9...",
+    price: "₹2,400",
+    originalPrice: "₹3,200",
+  },
+  {
+    id: 2,
+    image: "https://i.imgur.com/gB34fIl.png",
+    title: "Golden Pearl Drop Earrings",
+    price: "₹1,800",
+    originalPrice: "₹2,500",
+  },
+  {
+    id: 3,
+    image: "https://i.imgur.com/gB34fIl.png",
+    title: "Silver Stud Heart Earrings",
+    price: "₹1,200",
+    originalPrice: "₹1,700",
+  },
+    {
+    id: 11,
+    image: "https://i.imgur.com/gB34fIl.png",
+    title: "Bring in the Kindness Heart Earrings in 9...",
+    price: "₹2,400",
+    originalPrice: "₹3,200",
+  },
+  {
+    id: 22,
+    image: "https://i.imgur.com/gB34fIl.png",
+    title: "Golden Pearl Drop Earrings",
+    price: "₹1,800",
+    originalPrice: "₹2,500",
+  },
+  {
+    id: 33,
+    image: "https://i.imgur.com/gB34fIl.png",
+    title: "Silver Stud Heart Earrings",
+    price: "₹1,200",
+    originalPrice: "₹1,700",
+  },
+    {
+    id: 111,
+    image: "https://i.imgur.com/gB34fIl.png",
+    title: "Bring in the Kindness Heart Earrings in 9...",
+    price: "₹2,400",
+    originalPrice: "₹3,200",
+  },
+  {
+    id: 222,
+    image: "https://i.imgur.com/gB34fIl.png",
+    title: "Golden Pearl Drop Earrings",
+    price: "₹1,800",
+    originalPrice: "₹2,500",
+  },
+  {
+    id: 333,
+    image: "https://i.imgur.com/gB34fIl.png",
+    title: "Silver Stud Heart Earrings",
+    price: "₹1,200",
+    originalPrice: "₹1,700",
+  },
+];
 
-        <img
-          src="https://i.imgur.com/gB34fIl.png"
-          alt="Kindness Heart Earrings"
-          className="product-image"
-        />
-        <button className="like-button" aria-label="Add to wishlist">
-          <HeartIcon />
-        </button>
-      </div>
-      <div className="product-details">
-        <div className="product-pricing">
-          <span className="current-price">₹2,400</span>
-          <span className="original-price">₹3,200</span>
+return (
+  <div className="product-list row g-3">
+    {products.map((product) => (
+      <div className="product-card" key={product.id}>
+        <div className="product-image-container">
+          <img
+            src={product.image}
+            alt={product.title}
+            className="product-image"
+          />
+          <button className="like-button" aria-label="Add to wishlist">
+            <HeartIcon />
+          </button>
         </div>
-        <h3 className="product-title">
-          Bring in the Kindness Heart Earrings in 9...
-        </h3>
+
+        <div className="product-details">
+          <div className="product-pricing">
+            <span className="current-price">{product.price}</span>
+            <span className="original-price">{product.originalPrice}</span>
+          </div>
+
+          <h3 className="product-title">{product.title}</h3>
+        </div>
       </div>
-    </div>
-  );
+    ))}
+  </div>
+);
 };
 
 export default ProductCard;
