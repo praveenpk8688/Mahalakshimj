@@ -1,39 +1,53 @@
-import Button from 'react-bootstrap/Button';
+import React, { useState, useEffect } from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import '../../Styles/MainNavbar.css'
-
-
+import '../../Styles/MainNavbar.css';
 
 function MainNavbar() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <Navbar expand="lg" className="bg-black">
-      <Container fluid >
-        <Navbar.Brand className='mainlogo' href="#">logo</Navbar.Brand>
-        <Navbar.Toggle aria-controls="navbarScroll" />
+    <Navbar expand="lg" className={`glass-navbar ${scrolled ? 'nav-scrolled' : ''}`}>
+      <Container>
+        <Navbar.Brand className="mainlogo" href="#">Mahalakshmi</Navbar.Brand>
+        <Navbar.Toggle aria-controls="navbarScroll" className="border-0 shadow-none">
+          <i className="fa-solid fa-bars" style={{color: 'var(--primary-gold)'}}></i>
+        </Navbar.Toggle>
         <Navbar.Collapse id="navbarScroll">
           <Nav
-            className="me-auto my-2 my-lg-0 mainNav"
-            style={{ maxHeight: '100px' }}
+            className="mx-auto my-2 my-lg-0 mainNav"
+            style={{ maxHeight: '250px' }}
             navbarScroll
           >
-
-            <Nav.Link className='navLinks ' style={{ marginLeft: '90px' }} href="#action1">All Jewellery</Nav.Link>
-            <Nav.Link className='navLinks' href="#action1">Gold</Nav.Link>
-            <Nav.Link className='navLinks' href="#action1">Silver</Nav.Link>
-            <Nav.Link className='navLinks' href="#action1">Dimond</Nav.Link>
-            <Nav.Link className='navLinks' href="#action1">Gift Store</Nav.Link>
-
+            <Nav.Link className="navLinks" href="#all">Jewellery</Nav.Link>
+            <Nav.Link className="navLinks" href="#gold">Gold</Nav.Link>
+            <Nav.Link className="navLinks" href="#silver">Silver</Nav.Link>
+            <Nav.Link className="navLinks" href="#diamond">Diamond</Nav.Link>
+            <Nav.Link className="navLinks" href="#gift">Gifting</Nav.Link>
           </Nav>
-          <div className='navIcons'>
-            <i className="fa-regular fa-user" style={{ color: '#ffffff', fontSize: '24px' }}></i>
-            <i class="fa-regular fa-heart" style={{ color: "#ffffff", fontSize: '26px' }}></i>
-            <i class="fa-solid fa-bag-shopping" style={{ color: "#ffffff", fontSize: '26px' }}></i>
-
-            <Button variant=""><i class="fa-solid fa-magnifying-glass" style={{ color: "#ffffff", fontSize: '26px' }}></i></Button>
+          <div className="navIcons">
+            <button className="nav-icon-btn" aria-label="Search">
+              <i className="fa-solid fa-magnifying-glass"></i>
+            </button>
+            <button className="nav-icon-btn" aria-label="Account">
+              <i className="fa-regular fa-user"></i>
+            </button>
+            <button className="nav-icon-btn" aria-label="Wishlist">
+              <i className="fa-regular fa-heart"></i>
+            </button>
+            <button className="nav-icon-btn" aria-label="Cart">
+              <i className="fa-solid fa-bag-shopping"></i>
+            </button>
           </div>
-
         </Navbar.Collapse>
       </Container>
     </Navbar>
